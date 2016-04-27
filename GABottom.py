@@ -1,10 +1,13 @@
 '''
 Created on Mar 28, 2015
-@author: Joshua Guenther
-@author: Laura moyer
+@author: JGuenther
+
+Modified on April 14, 2015
+@author: DKolinko
+@author: LMoyer
 '''
 
-from ann import *
+from ANN import *
 import random
 import pygame,sys
 from pygame.locals import *
@@ -13,8 +16,8 @@ from pygame.locals import *
 class GA():
     def __init__(self, display):
         self.gameScreen = display
-        self.pop_size = 10#200
-        self.generations = 5#100
+        self.pop_size = 5
+        self.generations = 1
         self.curGeneration = 0
         self.population = []
         for x in range(self.pop_size):
@@ -76,13 +79,13 @@ class GA():
 
     def render(self):
         gameScreen = self.gameScreen
-        gameScreen.fill((0, 0, 0))
+        gameScreen.fill((57, 92, 142))
         fontSize = 15
         font = pygame.font.Font(None, fontSize)
         x = int(gameScreen.get_width()/2) - 40
         y = int(gameScreen.get_height()/2)
         output = ["Running GA", "Generation: "+str(self.curGeneration)+"/"+str(self.generations), "Population Size: "+str(self.pop_size), "Best Fitness: "+str(self.population[0].fitness)]
         for s in range(len(output)):
-            text = font.render(output[s], 1, (155,155,155))
+            text = font.render(output[s], 1, (245,245,245))
             gameScreen.blit(text, (x, y + (s * fontSize)))
         pygame.display.update()

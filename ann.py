@@ -1,16 +1,19 @@
 '''
 Created on Mar 28, 2015
-
 @author: JGuenther
+
+Modified on April 14, 2015
+@author: DKolinko
+@author: LMoyer
 '''
 import random
-from gameObjects import *
+from GameObjects import *
 
 #Class representing an Artifcial Neural Network
 class ANN():
     #static variables
     problemSize = 3
-    
+
     def __init__(self, nodeWeights=[]):
         #Need list so we are not referencing what is passed in
         self.nodeWeights = list(nodeWeights)
@@ -21,9 +24,9 @@ class ANN():
                 rnd = (random.random()*2)-1
                 self.nodeWeights.append(rnd)
         self.fitness = 0
-    
+
     # Create and return a copy of itself
-    def copy(self): 
+    def copy(self):
         newIndiv = ANN(self.nodeWeights[:])
         return newIndiv
 
@@ -43,7 +46,7 @@ class ANN():
             else:
                 new_indiv.nodeWeights[w]= other.nodeWeights[w]
         return new_indiv
-    
+
     #Represents the Object when it it printed out
     def __repr__(self):
         return '{}: {} {}'.format(self.__class__.__name__, self.nodeWeights, self.fitness)
@@ -81,7 +84,5 @@ class ANN():
                 randValue = random.uniform(-1.0,1.0)
                 newWeights.append(randValue)
             return newWeights
-        
+
         # Given inputs, sum up the signal and activate if above 0, or send -1
-        
-    
